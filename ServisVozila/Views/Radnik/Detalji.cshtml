@@ -1,0 +1,99 @@
+﻿
+
+@using ServisVozila.Models
+@model radnik
+@{
+    ViewBag.Title = "Detalji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<h2>Detalji o radniku</h2>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>ID Radnika:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.idRadnik
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Prezime:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.prezimeRadnik
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>Ime:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.imeRadnik
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>OIB:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.oibRadnik
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Datum rođenja:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.datRodenja
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Satnica:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.satnica
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Broj telefona:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.brojTelefona
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Email:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.email
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>ID odjel:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.radnik_odjel
+    </div>
+</div>
+
+
+
+<br />
+
+@Html.ActionLink("Povratak na popis radnika", "PopisRadnika", "Radnik", new { @class = "btn btn-info btn-sm" });
+

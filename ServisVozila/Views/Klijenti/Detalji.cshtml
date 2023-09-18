@@ -1,0 +1,70 @@
+﻿
+@using ServisVozila.Models
+@model Klijenti
+@{
+    ViewBag.Title = "Detalji";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+}
+
+<h2>Detalji o klijentu</h2>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>ID Klijenta:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.id
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Prezime:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.prezime
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>Ime:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.ime
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>OIB:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.oib
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Broj telefona:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.brojTelefona
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Email:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.email
+    </div>
+</div>
+
+
+
+<br />
+
+@Html.ActionLink("Povratak na popis klijenata", "PopisKlijenata", "Klijenti", new { @class = "btn btn-info btn-sm" });
+

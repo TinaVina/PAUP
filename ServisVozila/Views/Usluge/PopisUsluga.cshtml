@@ -1,0 +1,41 @@
+﻿@using ServisVozila.Models
+@using ServisVozila.Misc
+@model List<kvar>
+@{
+    ViewBag.Title = "PopisUsluga";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Popis naših usluga</h2>
+<br/>
+<table id="customers" border="1">
+    <tr>
+
+        <th>ID</th>
+        <th>Naziv</th>
+        <th>Sati potrebni</th>
+        <th>Cijena</th>
+        @if (User.Identity.IsAuthenticated && (User as LogiraniKorisnik).IsInRole(OvlastiKorisnik.Administrator))
+        {
+            <th>Izbriši</th>
+        }
+
+    </tr>
+    @foreach (var kvar in Model)
+    {
+<tr>
+    <td>@kvar.idKvar</td>
+    <td>@kvar.nazivKvar</td>
+    <td>@kvar.satiPotrebni</td>
+    <td>@kvar.cijenaKvar</td>
+
+    @if (User.Identity.IsAuthenticated && (User as LogiraniKorisnik).IsInRole(OvlastiKorisnik.Administrator))
+    {
+        <td> <center/> @Html.ActionLink("Izbriši", "Brisi", new { id = kvar.idKvar }, new { @class = "btn btn-danger btn-sm" })</td>
+    }
+
+</tr>
+    }
+</table>
+
+

@@ -1,0 +1,28 @@
+﻿@using ServisVozila.Models
+@model Klijenti
+@{
+    ViewBag.Title = "Briši";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> @ViewBag.Title</h2>
+
+
+<strong>Jeste li sigurni da želite obrisati klijenta @Model.prezime (OIB: @Model.oib)?</strong>
+
+<br />
+<br />
+@using (Html.BeginForm("Brisi", "Klijenti"))
+{
+    @Html.AntiForgeryToken();
+    <button type="submit" class="btn btn-danger">
+        <span class="glyphicon glyphicon-ok" aria-hidden="false">
+        </span>
+        Izbriši
+    </button>
+
+    <br />
+    <br />
+    <br />
+    @Html.ActionLink("Odustani", "PopisKlijenata", "Klijenti", new { @class = "btn btn-info btn-sm" });
+}

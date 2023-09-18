@@ -1,0 +1,77 @@
+﻿@using ServisVozila.Models
+@model List<radnik>
+@{
+    ViewBag.Title = "Popis radnika";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Site.css">
+
+<h2>@ViewBag.Title</h2>
+
+
+<a href="@Url.Action("Azuriraj","Radnik")" class="btn btn-success">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Kreiranje novog radnika
+</a>
+    <br />
+    <br />
+    
+    @using (Html.BeginForm("PopisRadnika", "Radnik", FormMethod.Get, new { @class = "form-inline" }))
+    {
+        @Html.TextBox("prezimeRadnik", "", new { @class = "form-control", placeholder = "Prezime radnika" })
+
+        <button type="submit" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span> Traži
+        </button>
+    }
+    <br />
+
+    @if (Model.Count == 0)
+    {
+        <p>Nema rezultata pretrage!</p>
+    }
+    else
+    {
+        <table id="customers" border="1">
+            <tr>
+
+                <th>  <center>ID</th>
+                <th>  <center>Prezime</th>
+                <th>  <center>Ime</th>
+                <th>  <center>OIB</th>
+                <th>  <center>Datum rođenja</th>
+                <th>  <center>Email</th>
+                <th>  <center>Broj telefona</th>
+                <th>  <center>Satnica</th>
+                <th>  <center>ID odjel</th>
+                <th>  <center>Detalji o radniku</th>
+                <th>  <center>Detalji o odjelu</th>
+                <th>  <center>Izbriši</th>
+                <th>  <center>Ažuriraj</th>
+
+
+            </tr>
+            @foreach (var radnik in Model)
+            {
+        <tr>
+            <td>@radnik.idRadnik</td>
+            <td>@radnik.prezimeRadnik</td>
+            <td>@radnik.imeRadnik</td>
+            <td>@radnik.oibRadnik</td>
+            <td><center/>@radnik.datRodenja.ToString("dd.MM.yyyy")</td>
+            <td>@radnik.email</td>
+            <td>@radnik.brojTelefona</td>
+            <td><center/>@radnik.satnica</td>
+            <td><center/>@radnik.radnik_odjel</td>
+            <td> <center/>@Html.ActionLink("Info", "Detalji", new { id = radnik.idRadnik }, new { @class = "btn btn-warning btn-sm" })</td>
+            <td> <center/>@Html.ActionLink("Info", "DetaljiOOdjelu", new { id = radnik.radnik_odjel }, new { @class = "btn btn-success btn-sm" })</td>
+            <td> <center/> @Html.ActionLink("Izbriši", "Brisi", new { id = radnik.idRadnik }, new { @class = "btn btn-danger btn-sm" })</td>
+            <td> <center/> @Html.ActionLink("Ažuriraj", "Azuriraj", new { id = radnik.idRadnik }, new { @class = "btn btn-info btn-sm" })</td>
+
+
+
+        </tr>
+            }
+        </table>
+
+    }

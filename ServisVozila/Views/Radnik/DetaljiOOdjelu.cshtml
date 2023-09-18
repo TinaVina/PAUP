@@ -1,0 +1,31 @@
+﻿@using ServisVozila.Models
+@model odjel
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalji o odjelu</h2>
+
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>ID odjela:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.idOdjel
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Naziv odjela:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.nazivOdjel
+    </div>
+</div>
+
+
+<br />
+@Html.ActionLink("Povratak na popis radnika", "PopisRadnika", "Radnik", new { @class = "btn btn-info btn-sm" });

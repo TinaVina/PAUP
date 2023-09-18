@@ -1,0 +1,47 @@
+﻿@using ServisVozila.Models
+@model kvar
+@{
+    ViewBag.Title = "DetaljiOKvaru";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Detalji o kvaru</h2>
+
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>ID kvara:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.idKvar
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-2">
+        <strong>Naziv kvara:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.nazivKvar
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>Cijena kvara:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.cijenaKvar
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-2">
+        <strong>Sati potrebni:</strong>
+    </div>
+    <div class="col-md-10">
+        @Model.satiPotrebni
+    </div>
+</div>
+
+<br />
+@Html.ActionLink("Povratak na popis klijenata", "PopisKlijenata", "Klijenti", new { @class = "btn btn-info btn-sm" });
+

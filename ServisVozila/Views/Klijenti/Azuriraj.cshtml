@@ -1,0 +1,104 @@
+﻿@using ServisVozila.Models
+@model Klijenti
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+@{ if (ViewBag.Novi)
+    {
+        <h2>Kreiranje novog klijenta</h2>
+    }
+    else
+    {
+        <h2>Ažuriranje podataka o klijenta</h2>
+        <h3>@Model.ime @Model.prezime</h3>
+    }
+}
+@using (Html.BeginForm("Azuriraj", "Klijenti", FormMethod.Post, new { @class = "form-horizontal", role = "form", enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "Ispravite Podatke");
+
+    if (!ViewBag.Novi)
+    {
+        <div class="form-group">
+            @Html.LabelFor(model => model.id, new { @class = "col-sm-2 control-label" })
+            <div class="col-sm-10">
+                @Html.TextBoxFor(model => model.id, new { disabled = true, @class = "from-control" })
+            </div>
+        </div>
+    }
+    <div class="form-group">
+        @Html.LabelFor(model => model.ime, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.ime, new { @class = "from-control" })
+            @Html.ValidationMessageFor(mocel => Model.ime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.prezime, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.prezime, new { @class = "from-control" })
+            @Html.ValidationMessageFor(mocel => Model.prezime, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.oib, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.oib, new { @class = "from-control" })
+            @Html.ValidationMessageFor(mocel => Model.oib, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.email, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.email, new { @class = "from-control" })
+            @Html.ValidationMessageFor(mocel => Model.email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.brojTelefona, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.brojTelefona, new { @class = "from-control" })
+            @Html.ValidationMessageFor(model => Model.brojTelefona, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    //////////////////////
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FK_klijentAutomobil, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.TextBoxFor(model => model.FK_klijentAutomobil, new { disabled = true, @class = "from-control" })
+           
+
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.FK_klijentKvar, new { @class = "col-sm-2 control-label" })
+        <div class="col-sm-10">
+            @Html.DropDownListFor(model => model.FK_klijentKvar, new SelectList(ViewBag.Usluge, "idKvar", "nazivKvar", ""), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.FK_klijentKvar, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-success">
+                <span class="glyphicon glyphicon-floppy-disk" aria-hidden="false"></span>
+                Spremi
+            </button>
+        </div>
+    </div>
+    @Html.ActionLink("Povratak bez spremanja", "PopisKlijenata", "Klijenti", new { @class = "btn btn-info btn-sm" })
+}

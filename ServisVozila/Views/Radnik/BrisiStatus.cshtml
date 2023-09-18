@@ -1,0 +1,8 @@
+﻿@{
+    ViewBag.Title = "Brisanje radnika";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="alert alert-success" role="alert">Radnik uspješno obrisan!</div>
+
+@Html.ActionLink("Povratak na popis radnika", "PopisRadnika", "Radnik", new { @class = "btn btn-info btn-sm" })

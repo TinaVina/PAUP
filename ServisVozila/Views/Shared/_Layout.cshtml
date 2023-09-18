@@ -1,0 +1,75 @@
+﻿@using ServisVozila.Misc
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - VBL Servis Vozila</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <style>
+        body {
+            background-color: lightgray;
+        }
+        </style>
+        <div class="navbar navbar-inverse navbar-fixed-top" >
+        <div class="container" >
+        <div class="navbar-header" >
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" >
+        <span class="icon-bar" > </span >
+        <span class="icon-bar" > </span >
+        <span class="icon-bar" > </span >
+        </button >
+
+        </div >
+        <div class="navbar-collapse collapse" >
+        <ul class="nav navbar-nav navbar-left" >
+        <li >@Html.ActionLink("Naslovnica", "Pocetna", "Pocetna") </li >
+        <li >@Html.ActionLink("O nama", "Onama", "Pocetna") </li >
+        <li >@Html.ActionLink("Usluge", "PopisUsluga", "Usluge") </li >
+        <li >@Html.ActionLink("Kontakt", "Kontakt", "Pocetna") </li >
+        <li >@Html.ActionLink("Radno vrijeme", "RadnoVrijeme", "Pocetna") </li >
+        @if (User.Identity.IsAuthenticated && (User as LogiraniKorisnik).IsInRole(OvlastiKorisnik.Administrator))
+                    {
+                         <li >@Html.ActionLink("Popis klijenata", "PopisKlijenata", "Klijenti") </li >
+                         <li >@Html.ActionLink("Popis radnika", "PopisRadnika", "Radnik") </li >
+                         <li >@Html.ActionLink("Korisnici", "PopisKorisnika", "Korisnici") </li >
+                    }
+        </ul >
+        <ul class="nav navbar-nav navbar-right" >
+        <li >@Html.ActionLink("Registracija", "Registracija", "Korisnici") </li >
+
+        </ul >
+
+
+        <ul class="nav navbar-nav navbar-right" >
+        @if (User.Identity.IsAuthenticated)
+                        {
+                             <li >@Html.ActionLink(((User as LogiraniKorisnik).PrezimeIme), "Pocetna", "Pocetna") </li >
+                             <li >@Html.ActionLink("Odjava", "Odjava", "Korisnici") </li >
+                        }
+                        else
+                        {
+                             <li >@Html.ActionLink("Prijava", "Prijava", "Korisnici") </li >
+                        }
+        </ul >
+
+
+        </div >
+        </div >
+        </div >
+        <div class="container body-content" >
+        @RenderBody()
+        <hr / >
+        <footer >
+        <p > &copy; VBL Servis vozila @DateTime.Now.Year </p >
+        </footer >
+        </div >
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)
+        </body >
+        </html >
